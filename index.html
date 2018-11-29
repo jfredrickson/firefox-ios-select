@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Firefox iOS SELECT</title>
+  </head>
+  <body>
+
+    <form action="index.html">
+
+      <p>Select an option, tap <b>Done</b>, then try tapping on an empty part of the page or scrolling up and down the page.</p>
+      <p>Problems:</p>
+      <ul>
+        <li>The dropdown selection prompt will keep sliding into view even after focus should have left the <code>SELECT</code> element</li>
+        <li>The selected option in the dropdown does not immediately show up after tapping <b>Done</b></li>
+        <li>The event message ("Selection changed to <i>X</i>") does not immediately show up</li>
+      </ul>
+
+      <div>
+        <select id="selection">
+          <option value="">Select one...</option>
+          <option value="One">One</option>
+          <option value="Two">Two</option>
+          <option value="Three">Three</option>
+        </select>
+      </div>
+
+      <div>
+        <button id="submit" type="submit">Submit</button>
+      </div>
+
+    </form>
+
+    <div>Message: <span id="message"></span></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("#selection").bind("change", null, function (event) {
+          $("#message").text(`Selection changed to ${$("#selection").val()}`)
+        })
+      })
+    </script>
+
+  </body>
+</html>
